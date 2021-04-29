@@ -1,0 +1,46 @@
+{
+  "name": "basic-node-project",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "http-server ./public --port 8888 ",
+    "watch": "webpack --mode development --env WEBPACK_WATCH=true --env NODE_ENV=development ",
+    "build-dev": "webpack --mode development --env WEBPACK_WATCH=false --env NODE_ENV=development",
+    "build": "webpack --mode production --env NODE_ENV=production",
+    "pkg": "pkg ."
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.11.2",
+    "@widgetjs/tree": "^1.8.3",
+    "bootstrap": "^4.6.0",
+    "codemirror": "^5.60.0",
+    "cookie-parser": "~1.4.4",
+    "file-saver": "^2.0.2",
+    "gsap": "^3.2.6",
+    "interactjs": "^1.10.11",
+    "modal-vanilla": "^0.9.0",
+    "pkg": "^4.5.1",
+    "tiny-emitter": "^2.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.11.5",
+    "babel-loader": "^8.1.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^6.1.1",
+    "css-loader": "^4.3.0",
+    "file-loader": "^6.1.0",
+    "html-webpack-plugin": "^4.5.0",
+    "http-server": "^0.12.3",
+    "mini-css-extract-plugin": "^0.11.2",
+    "node-sass": "^4.14.1",
+    "regenerator-runtime": "^0.13.7",
+    "sass-loader": "^10.0.2",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack": "^4.44.2",
+    "webpack-bundle-analyzer": "^4.4.0",
+    "webpack-cli": "^4.4.0",
+    "webpack-split-chunks": "^0.2.1"
+  }
+}

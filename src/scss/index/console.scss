@@ -1,0 +1,18 @@
+.editor-console-outer {
+	background-color: #2b3e50 !important;
+	border-left: 1px solid rgba(#fff, 0.5);
+	overflow-y: hidden;
+	.editor-console {
+		font-family: monospace;
+		font-size: 1.25rem;
+		color: #fff;
+		line-height: 1.25rem;
+		height: 100%;
+		overflow-y: auto;
+	}
+
+	hr {
+		color: rgba(#fff, 0.5);
+		background-color: rgba(#fff, 0.25);
+	}
+}

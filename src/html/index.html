@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript Sandbox</title>
+  </head>
+
+  <body>
+    <header class="d-flex flex-row align-items-center px-3">
+      <div class="logo-container d-flex flex-row w-100 align-items-center">
+        <img style="width: 22px; height: 22px" src="./images/cube.svg" />
+        <h1 class="ml-2">JSBX</h1>
+        <button class="btn btn-info edit-head-btn ml-auto">
+          ADD SCRIPT TAG
+        </button>
+      </div>
+    </header>
+    <main class="d-flex flex-row">
+      <div class="editor-container-outer d-flex flex-column">
+        <div class="d-flex flex-row ml-auto p-2 w-100 control-container">
+          <button class="btn btn-info mr-3 run-btn">RUN</button>
+          <button class="btn btn-danger ml-auto clear-editor-btn">CLEAR</button>
+        </div>
+        <div
+          class="editor-container h-100 d-flex flex-column position-relative"
+        ></div>
+      </div>
+      <div class="editor-console-outer d-flex flex-column">
+        <div class="d-flex flex-row ml-auto p-2 w-100 control-container">
+          <button class="btn btn-danger ml-auto clear-console-btn">
+            CLEAR
+          </button>
+        </div>
+        <div class="editor-console p-2"></div>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+html,
+body {
+  font-family: sans-serif;
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
+  background: #040404;
+}
+body {
+  background-color: transparent;
+}
+
+main {
+  height: calc(100vh - 50px);
+}
+
+.editor-container-outer {
+  height: 100%;
+  width: 50vw;
+}
+
+.editor-console-outer {
+  height: 100%;
+  width: 50vw;
+}
+
+.control-container {
+  background-color: rgba(#556573, 1);
+}
+
+.CodeMirror {
+  //height: 100%;
+  padding: 0.5rem;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  font-size: 1.25rem;
+}
+
+.CodeMirror-selected {
+  background: #cccccc !important;
+}
+
+.CodeMirror-scroll {
+  max-height: 100%;
+}
+
+.modal-dialog {
+  max-width: 50vw !important;
+}

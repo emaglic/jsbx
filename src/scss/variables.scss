@@ -1,0 +1,30 @@
+$textColor: #00ff33;
+$darkTextColor: #009e00;
+$backgroundColor: #000;
+$disabledText: #97a3b9;
+$buttonColor: #013d4f;
+$buttonHoverColor: #00666d;
+$clean-vin: #2a9647;
+$error-vin: #d7262d;
+$regular-text: rgba(0, 0, 0, 0.87);
+$helper-text: rgba(0, 0, 0, 0.6);
+$regular-opacity: 0.87;
+$helper-opacity: 0.6;
+$line-opacity: rgba(0, 0, 0, 0.2);
+
+$vituDarkGreen: #013d4f;
+$vituBlue: #4fc8ec;
+$vituBlueHover: #43aac9;
+$vituDarkGray: #97a3b9;
+$vituBackGray: #f2f6f9;
+$vituShadow: 4px 4px 7px 0px rgba(0, 0, 0, 0.15);
+
+.bg-vitu-dark-green {
+	background-color: #013d4f !important;
+	background: #013d4f !important;
+}
+
+.bg-vitu-blue {
+	background-color: #4fc8ec !important;
+	background: #4fc8ec !important;
+}

@@ -1,0 +1,203 @@
+// Color Variables
+$primary: #007bff;
+$secondary: #6c757d;
+$success: #28a745;
+$danger: #dc3545;
+$warning: #ffc107;
+$light: #f8f9fa;
+$dark: #343a40;
+$info: #17a2b8;
+$muted: #6c757d;
+$white: #fff;
+
+// Opacity Classes
+// ============================================
+.opacity-0 {
+	opacity: 0 !important;
+}
+
+.opacity-25 {
+	opacity: 0.25 !important;
+}
+
+.opacity-50 {
+	opacity: 0.5 !important;
+}
+
+.opacity-75 {
+	opacity: 0.75 !important;
+}
+// ============================================
+
+// Cursor Classes
+// ============================================
+.cursor-alias {
+	cursor: alias !important;
+}
+.cursor-all-scroll {
+	cursor: all-scroll !important;
+}
+.cursor-auto {
+	cursor: auto !important;
+}
+.cursor-cell {
+	cursor: cell !important;
+}
+.cursor-context-menu {
+	cursor: context-menu !important;
+}
+.cursor-col-resize {
+	cursor: col-resize !important;
+}
+.cursor-copy {
+	cursor: copy !important;
+}
+.cursor-crosshair {
+	cursor: crosshair !important;
+}
+.cursor-default {
+	cursor: default !important;
+}
+.cursor-e-resize {
+	cursor: e-resize !important;
+}
+.cursor-ew-resize {
+	cursor: ew-resize !important;
+}
+.cursor-grab {
+	cursor: grab !important;
+}
+.cursor-grabbing {
+	cursor: grabbing !important;
+}
+.cursor-help {
+	cursor: help !important;
+}
+.cursor-move {
+	cursor: move !important;
+}
+.cursor-n-resize {
+	cursor: n-resize !important;
+}
+.cursor-ne-resize {
+	cursor: ne-resize !important;
+}
+.cursor-nesw-resize {
+	cursor: nesw-resize !important;
+}
+.cursor-ns-resize {
+	cursor: ns-resize !important;
+}
+.cursor-nw-resize {
+	cursor: nw-resize !important;
+}
+.cursor-nwse-resize {
+	cursor: nwse-resize !important;
+}
+.cursor-no-drop {
+	cursor: no-drop !important;
+}
+.cursor-none {
+	cursor: none !important;
+}
+.cursor-not-allowed {
+	cursor: not-allowed !important;
+}
+.cursor-pointer {
+	cursor: pointer !important;
+}
+.cursor-progress {
+	cursor: progress !important;
+}
+.cursor-row-resize {
+	cursor: row-resize !important;
+}
+.cursor-s-resize {
+	cursor: s-resize !important;
+}
+.cursor-se-resize {
+	cursor: se-resize !important;
+}
+.cursor-sw-resize {
+	cursor: sw-resize !important;
+}
+.cursor-text {
+	cursor: text !important;
+}
+/* .cursor-url {
+  cursor: url(myBall.cur),auto !important
+} */
+.cursor-w-resize {
+	cursor: w-resize !important;
+}
+.cursor-wait {
+	cursor: wait !important;
+}
+.cursor-zoom-in {
+	cursor: zoom-in !important;
+}
+.cursor-zoom-out {
+	cursor: zoom-out !important;
+}
+// ============================================
+
+.scroll-y {
+	overflow-y: scroll;
+}
+
+.scroll-x {
+	overflow-x: scroll;
+}
+
+// Basic Circular 360 Rotation
+// ============================================
+@-ms-keyframes spin {
+	from {
+		-ms-transform: rotate(0deg);
+	}
+	to {
+		-ms-transform: rotate(360deg);
+	}
+}
+@-moz-keyframes spin {
+	from {
+		-moz-transform: rotate(0deg);
+	}
+	to {
+		-moz-transform: rotate(360deg);
+	}
+}
+@-webkit-keyframes spin {
+	from {
+		-webkit-transform: rotate(0deg);
+	}
+	to {
+		-webkit-transform: rotate(360deg);
+	}
+}
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+// ============================================
+
+.bg-disabled {
+	background-color: #6c757d78 !important;
+}
+
+.small-label,
+.small-text {
+	font-size: 0.85rem;
+}
+
+.overflow-x-hidden {
+	overflow-x: hidden;
+}
+
+.overflow-y-hidden {
+	overflow-y: hidden;
+}
