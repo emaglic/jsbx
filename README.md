@@ -24,3 +24,7 @@ This is a hobby project created for my own development and testing. You are free
 With all that out of the way: Happy coding!
 
 Created by Eben Maglic | 2021 - 2022
+
+## Note
+
+The /public folder contains the pre-compiled version of the project, should you want to use it without compiling it yourself.
