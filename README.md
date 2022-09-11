@@ -1,12 +1,13 @@
 ## Overview
 
-This page provides an easy way to test HTML, CSS, and JavaScript in an isolated environment.
+This page provides an easy way to prototype HTML, CSS, and JavaScript in an isolated environment.
 
 At no time does this page store your code in any database on any servers. It lives entirely in the client browser.
-However, your code is shareable. The code you write is encoded as base64 and stored in query params in the URL. You can share the URL with others so that they can also see and test your code.
-Note that when you make changes to your code, the URL query params change, so sharing the new URL is required.
-Also note that the URL length is dependent on how much code you write, so it could get extremely long.
-I can't seem to find a hard limit on the maximum allowable length of query strings, so just be advised, it can get LOOOOONG.
+However, your code is shareable. The code you write is encoded as base64 and stored in query params in the URL. You can share the URL with others so that they can also see and run your code.
+
+- Note that when you make changes to your code, the URL query params change, so sharing the new URL is required.
+- Also note that the URL length is dependent on how much code you write, so it could get extremely long.
+  I can't seem to find a hard limit on the maximum allowable length of query strings, so just be advised, it can get LOOOOONG.
 
 ### Left Panel
 
