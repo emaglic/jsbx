@@ -4,8 +4,8 @@
 *.zip
 
 # compiled output
-/public
-/dist
+# /public
+# /dist
 /tmp
 /out-tsc
 
