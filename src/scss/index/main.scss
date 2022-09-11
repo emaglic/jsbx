@@ -1,3 +1,19 @@
+*:focus,
+input:focus {
+  outline: none !important;
+  border-color: inherit;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.form-control:focus {
+  box-shadow: none;
+}
+
+html {
+  font-size: 12px;
+}
+
 html,
 body {
   font-family: sans-serif;
@@ -14,6 +30,25 @@ main {
   height: calc(100vh - 50px);
 }
 
+.edit-head-btn {
+  &.hidden {
+    display: none;
+  }
+}
+
+.editor-tabs {
+  display: flex;
+  align-items: flex-end;
+}
+
+.editor-tab-btn {
+  border-radius: 0px;
+  &.selected {
+    background-color: #2b3e50 !important;
+    border-color: #2b3e50 !important;
+  }
+}
+
 .editor-container-outer {
   height: 100%;
   width: 50vw;
@@ -26,6 +61,68 @@ main {
 
 .control-container {
   background-color: rgba(#556573, 1);
+
+  .iframe-console-btn {
+    border-radius: 0px 0px 0px 0px;
+  }
+
+  .right-controls {
+    display: flex;
+
+    .pop-out-preview-group {
+      cursor: pointer !important;
+
+      &.hidden {
+        display: none;
+      }
+
+      &:hover {
+        background-color: #d1d3d6;
+        border-color: #d1d3d6;
+        //color: #fff;
+      }
+
+      label {
+        pointer-events: none;
+        margin-left: 0.75rem;
+      }
+    }
+
+    #pop-out-preview {
+      pointer-events: none;
+    }
+
+    .clear-console-btn {
+      margin-left: 1rem;
+
+      &.hidden {
+        display: none;
+      }
+    }
+  }
+}
+
+.editor-inner {
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+.iframe-preview {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+
+  &.hidden {
+    display: none;
+  }
+  iframe {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: #fff;
+  }
 }
 
 .CodeMirror {

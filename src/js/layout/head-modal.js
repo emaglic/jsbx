@@ -1,4 +1,5 @@
 const Modal = require("modal-vanilla");
+const { encodeQueryParam, deleteQueryParam, decodeQueryParam } = require("../helpers/query-params");
 
 class HeadModal {
   constructor() {
@@ -8,6 +9,21 @@ class HeadModal {
     this.modal = new Modal({
       el: document.body.querySelector("#static-modal"),
     });
+
+    const scripts = decodeQueryParam("scripts");
+    this.scriptsList = [];
+
+    if (scripts) {
+      if (Array.isArray(scripts)) {
+        [...new Set(scripts)].forEach((script) => {
+          this.injectHeadScript(script);
+          this.addInput(script);
+        });
+      } else {
+        this.addInput(scripts);
+        this.injectHeadScript(scripts);
+      }
+    }
   }
 
   show() {
@@ -29,88 +45,65 @@ class HeadModal {
     <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">Append To Head</h4>  
+            <h4 class="modal-title">HELP!</h4>  
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button> 
           </div>
           <div class="modal-body">
-              <div class='d-flex flex-column head-input-container'>
-              </div>
-              <div class='d-flex flex-row'>
-                <button class='btn btn-info add-head-input'>+ Add Item</button>
-              </div>
-            <div class='d-flex flex-row alert alert-info mt-3'>
-              <small>Instructions: These input fields only accept a src attribute for loading a JS file from a local path or from a CDN. This way you can test other JS libraries in the Sandbox as needed.</small>
+          
+            <div class='d-flex flex-column'>
+            <ul class='list-group'>
+            <li class='list-group-item active' style='background-color: #17a2b8;'>Overview</li>
+              <li class='list-group-item'>This page provides an easy way to test HTML, CSS, and JavaScript in an isolated environment.</li>
+              <li class='list-group-item'>At no time does this page store your code in any database on any servers. It lives entirely in the client browser.<br/><br/>However, your code is shareable. The code you write is encoded as base64 and stored in query params in the URL. You can share the URL with others so that they can also see and test your code.<br/><br/>Note that when you make changes to your code, the URL query params change, so sharing the new URL is required.<br/><br/>Also note that the URL length is dependent on how much code you write, so it could get extremely long.<br/><br/>I can't seem to find a hard limit on the maximum allowable length of query strings, so just be advised, it can get LOOOOONG.</li>
+            
+            </ul>
+          </div>
+          <hr/>
+            <div class='d-flex flex-column'>
+              <ul class='list-group'>
+              <li class='list-group-item active' style='background-color: #17a2b8;'>Left Panel</li>
+                <li class='list-group-item'>Write HTML, CSS and JavaScript in the panels provided at the left, use the tabs to switch between them.</li>
+                <li class='list-group-item'>When you are ready to preview your compiled code press the RUN button at the top right of the editor panel.</li>
+              </ul>
             </div>
+            <hr/>
+            <div class='d-flex flex-column'>
+              <ul class='list-group'>
+              <li class='list-group-item active' style='background-color: #17a2b8;'>Right Panel</li>
+                <li class='list-group-item'>Any logs or errors from your code will be displayed in the CONSOLE panel at the right.</li>
+                <li class='list-group-item'>The web-page preview will be displayed in the PREVIEW panel at the right.</li>
+                <li class='list-group-item'>You can [optionally] click the 'Pop-Out Preview' button in the PREVIEW panel to have the preview also open as a separate window.
+                <div class='d-flex flex-column mt-3 alert alert-info'>
+                  Note: You must click RUN again after activating the 'Pop-Out Preview' button in order for the pop-out window to be created.
+                </div>
+                </li>
+              </ul>
+            </div>
+            
+            <hr/>
+
+            <div class='d-flex flex-column align-items-center mt-3'>
+              <small>This is a hobby project created for my own development and testing. You are free to use it as you wish, but I cannot offer any support or guarantees of any kind. If the site goes down or the site's code breaks, you'll have to bear with me until I can get around to fixing it.<br/><br/>With all that out of the way: Happy coding!</small>
+            </div>
+
+            <div class='d-flex flex-column align-items-center mt-3'>
+              <small>Created by Eben Maglic | 2021 - 2022</small>
+            </div>
+            
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-info" data-dismiss="modal">CLOSE</button>  
-            <button class='btn btn-info head-append mr-3'>APPEND</button>
+            <button type="button" class="btn btn-info" data-dismiss="modal">OKAY</button>  
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     `;
 
-    let appendBtn = div.querySelector(".head-append");
-    let clearBtn = div.querySelector(".head-clear");
-
-    let addHeadInput = div.querySelector(".add-head-input");
-    addHeadInput.onclick = () => {
-      this.addInput();
-    };
-
-    appendBtn.onclick = () => {
-      this.injectHeadCode();
-    };
-
     this.elements = {
       ...this.elements,
       modalInner: div,
-      appendBtn,
     };
 
     document.body.appendChild(div);
-  }
-
-  addInput() {
-    let div = document.createElement("div");
-    div.classList.add("d-flex", "flex-row", "mb-3");
-    div.innerHTML = /*html*/ `
-      <input type='text' class='head-item-input d-flex flex-grow-1' placeholder='Add Script SRC attribute only here'/>
-      <button class='btn btn-info item-remove ml-2'>X</button>
-    `;
-    let input = div.querySelector(".head-item-input");
-    let btn = div.querySelector(".item-remove");
-
-    btn.onclick = () => {
-      this.removeHeadCode(input.value);
-      div.parentNode.removeChild(div);
-    };
-    let headInputContainer = document.querySelector(".head-input-container");
-    headInputContainer.appendChild(div);
-  }
-
-  removeHeadCode(src) {
-    if (!this.scripts.length) return;
-    this.scripts.forEach((script, index) => {
-      if (src === script.src) {
-        script.parentNode.removeChild(script);
-        this.scripts = this.scripts.filter((i) => i.src !== src);
-      }
-    });
-  }
-
-  injectHeadCode() {
-    let head = document.querySelector("head");
-    let allInputs = document.querySelectorAll(".head-item-input");
-    [...allInputs].forEach((input) => {
-      input.setAttribute("disabled", true);
-      if (!head.innerHTML.includes(input.value)) {
-        let script = document.createElement("script");
-        script.src = input.value;
-        this.scripts.push(script);
-        head.appendChild(script);
-      }
-    });
   }
 }
 
