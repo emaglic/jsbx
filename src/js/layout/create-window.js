@@ -65,6 +65,9 @@ const createWindow = ({ html, js, css }) => {
     iframe.contentWindow.document.body.appendChild(injectScript);
 
     let bodyScript = iframe.contentWindow.document.createElement("script");
+    let type = /<script-type>(.*?)<\/script-type>/g.exec(js);
+    if (type) bodyScript.setAttribute("type", type[1]);
+    // bodyScript.setAttribute("type", "text/babel");
     bodyScript.innerHTML = /* javascript */ `(() => { ${js} })()`;
     iframe.contentWindow.document.body.appendChild(bodyScript);
 
