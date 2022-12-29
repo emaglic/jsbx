@@ -1,5 +1,13 @@
 let iframe = null;
 
+const getScriptAttribute = (scriptTag, attr) => {
+  let ret = null;
+  let regexp = new RegExp(`${attr}="([^"]*)"`, "g");
+  ret = scriptTag.match(regexp);
+  if (ret) ret = ret[0].replace(`${attr}=`, "").replaceAll('"', "");
+  return ret;
+};
+
 const compileWindowCode = (editorsArray) => {
   let html = "";
   let js = "";
@@ -65,9 +73,12 @@ const createWindow = ({ html, js, css }) => {
     iframe.contentWindow.document.body.appendChild(injectScript);
 
     let bodyScript = iframe.contentWindow.document.createElement("script");
-    let type = /<script-type>(.*?)<\/script-type>/g.exec(js);
-    if (type) bodyScript.setAttribute("type", type[1]);
-    // bodyScript.setAttribute("type", "text/babel");
+    // let type = /<script-type>(.*?)<\/script-type>/g.exec(js);
+    let scriptTag = /<jsbx-script(.*?)>/g.exec(js);
+
+    let type = getScriptAttribute(scriptTag[1], "type");
+    if (type) bodyScript.setAttribute("type", type);
+
     bodyScript.innerHTML = /* javascript */ `(() => { ${js} })()`;
     iframe.contentWindow.document.body.appendChild(bodyScript);
 

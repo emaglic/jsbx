@@ -4,11 +4,31 @@ const HeadModal = require("../layout/head-modal");
 const { compileWindowCode } = require("../layout/create-window");
 const { htmlBoilerplate } = require("./file-default-strings");
 
+let leftPanelActive = true;
+let rightPanelActive = true;
+
 let cm = null;
 let hm = null;
 
 let editorProps = [];
 let editors = [];
+
+const handlePanelToggle = (left, right) => {
+  console.log("leftPanelActive: ", leftPanelActive);
+  console.log("rightPanelActive: ", rightPanelActive);
+  if ((leftPanelActive && rightPanelActive) || (!leftPanelActive && !rightPanelActive)) {
+    left.classList.remove("hidden", "full-width");
+    right.classList.remove("hidden", "full-width");
+  } else if (leftPanelActive) {
+    right.classList.remove("full-width");
+    right.classList.add("hidden");
+    left.classList.add("full-width");
+  } else if (rightPanelActive) {
+    left.classList.remove("full-width");
+    left.classList.add("hidden");
+    right.classList.add("full-width");
+  }
+};
 
 const getAllEditors = () => {
   return editors;
@@ -18,6 +38,9 @@ const createUI = () => {
   let htmlProps = { container: ".editor-container", mode: "htmlmixed", param: "html", defaultValue: htmlBoilerplate(), getAllEditors: getAllEditors };
   let cssProps = { container: ".editor-container", mode: "css", param: "css", getAllEditors: getAllEditors };
   let jsProps = { container: ".editor-container", mode: "javascript", param: "js", getAllEditors: getAllEditors };
+
+  let editorConsoleOuter = document.querySelector(".editor-console-outer");
+  let editorContainerOuter = document.querySelector(".editor-container-outer");
 
   editorProps.push(htmlProps, cssProps, jsProps);
   editorProps.forEach((props, index) => {
@@ -32,14 +55,24 @@ const createUI = () => {
     hm.show();
   };
 
+  let toggleLeft = document.querySelector(".toggle-left");
+  toggleLeft.onclick = () => {
+    leftPanelActive = !leftPanelActive;
+    handlePanelToggle(editorContainerOuter, editorConsoleOuter);
+  };
+
+  let toggleRight = document.querySelector(".toggle-right");
+  toggleRight.onclick = () => {
+    rightPanelActive = !rightPanelActive;
+    handlePanelToggle(editorContainerOuter, editorConsoleOuter);
+  };
+
   const clearConsoleBtn = document.querySelector(".clear-console-btn");
   clearConsoleBtn.onclick = () => {
     const consoleEl = document.querySelector(".editor-console");
     if (consoleEl) consoleEl.innerHTML = "";
   };
 
-  let editorConsoleOuter = document.querySelector(".editor-console-outer");
-  let editorContainerOuter = document.querySelector(".editor-container-outer");
   interact(editorContainerOuter).resizable({
     edges: { top: true, left: true, bottom: true, right: true },
     listeners: {

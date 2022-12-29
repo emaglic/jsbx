@@ -10891,7 +10891,7 @@ body {
 }
 
 main {
-  height: calc(100vh - 50px);
+  height: calc(100vh - 92px);
 }
 
 .edit-head-btn.hidden {
@@ -10915,10 +10915,22 @@ main {
   height: 100%;
   width: 50vw;
 }
+.editor-container-outer.full-width {
+  width: 100%;
+}
+.editor-container-outer.hidden {
+  display: none !important;
+}
 
 .editor-console-outer {
   height: 100%;
   width: 50vw;
+}
+.editor-console-outer.full-width {
+  width: 100%;
+}
+.editor-console-outer.hidden {
+  display: none !important;
 }
 
 .control-container {
@@ -10995,4 +11007,9 @@ main {
 
 .modal-dialog {
   max-width: 50vw !important;
+}
+
+.toggle-btns {
+  width: 100%;
+  background-color: #556573;
 }

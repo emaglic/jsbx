@@ -27,7 +27,7 @@ body {
 }
 
 main {
-  height: calc(100vh - 50px);
+  height: calc(100vh - 92px);
 }
 
 .edit-head-btn {
@@ -52,11 +52,23 @@ main {
 .editor-container-outer {
   height: 100%;
   width: 50vw;
+  &.full-width {
+    width: 100%;
+  }
+  &.hidden {
+    display: none !important;
+  }
 }
 
 .editor-console-outer {
   height: 100%;
   width: 50vw;
+  &.full-width {
+    width: 100%;
+  }
+  &.hidden {
+    display: none !important;
+  }
 }
 
 .control-container {
@@ -147,4 +159,11 @@ main {
 
 .modal-dialog {
   max-width: 50vw !important;
+}
+
+.toggle-btns {
+  width: 100%;
+  background-color: #556573;
+  // border-bottom: solid 2px #38434c;
+  // justify-content: space-around;
 }

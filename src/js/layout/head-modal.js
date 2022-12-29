@@ -72,7 +72,7 @@ class HeadModal {
               <li class='list-group-item active' style='background-color: #17a2b8;'>Right Panel</li>
                 <li class='list-group-item'>Any logs or errors from your code will be displayed in the CONSOLE panel at the right.</li>
                 <li class='list-group-item'>The web-page preview will be displayed in the PREVIEW panel at the right.</li>
-                <li class='list-group-item'>You can [optionally] click the 'Pop-Out Preview' button in the PREVIEW panel to have the preview also open as a separate window.
+                <li class='list-group-item'>You can [optionally] click the 'Pop-Out Preview' button in the PREVIEW panel to have the preview also open as a separate window. This window will be automatically refreshed each time you click the RUN button.
                 <div class='d-flex flex-column mt-3 alert alert-info'>
                   Note: You must click RUN again after activating the 'Pop-Out Preview' button in order for the pop-out window to be created.
                 </div>
@@ -83,7 +83,7 @@ class HeadModal {
             <div class='d-flex flex-column'>
               <ul class='list-group'>
               <li class='list-group-item active' style='background-color: #17a2b8;'>Script Type</li>
-                <li class='list-group-item'>You can (optionally) specify the type attribute for the script tag used in the JS tab by putting in a comment at the top with the following format <b style='font-weight: bold'>&#60;script-type&#62;application/javascript&#60;/script-type&#62;</b><br/><br/>You can use this to change the script panel to text/babel or something else if you want to write JSX code that can be compiled by babel.<br/><br/>Click <a href='http://eben.pizza/projects/jsbx/${reactTemplate}' target='_blank' rel="nofollow">HERE</a> to launch JSBX with basic React template.<br/><br/>Note: Currently this template only works with the Pop-Out Preview mode. </li>
+                <li class='list-group-item'>You can [optionally] specify the type attribute for the script tag used in the JS tab by putting in a comment at the top with the following format <b style='font-weight: bold'>&#60;jsbx-script type="application/javascript"&#62;</b><br/><br/>You can use this to change the script panel to text/babel or something else if you want to write JSX code that can be compiled by babel.<br/><br/>Click <a href='http://eben.pizza/projects/jsbx/${reactTemplate}' target='_blank' rel="nofollow">HERE</a> to launch JSBX with basic React boilerplate.<br/><br/>Note: Currently this template only works with the Pop-Out Preview mode. </li>
                 </li>
               </ul>
             </div>

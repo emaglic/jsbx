@@ -11,7 +11,7 @@ const onLoad = () => {
   setupLogs();
 };
 
-window.addEventListener(
+/* window.addEventListener(
   "message",
   (e) => {
     const data = e.data;
@@ -20,6 +20,6 @@ window.addEventListener(
     }
   },
   true
-);
+); */
 
 window.onload = onLoad;
