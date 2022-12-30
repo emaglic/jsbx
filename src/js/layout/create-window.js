@@ -76,8 +76,10 @@ const createWindow = ({ html, js, css }) => {
     // let type = /<script-type>(.*?)<\/script-type>/g.exec(js);
     let scriptTag = /<jsbx-script(.*?)>/g.exec(js);
 
-    let type = getScriptAttribute(scriptTag[1], "type");
-    if (type) bodyScript.setAttribute("type", type);
+    if (scriptTag) {
+      let type = getScriptAttribute(scriptTag[1], "type");
+      if (type) bodyScript.setAttribute("type", type);
+    }
 
     bodyScript.innerHTML = /* javascript */ `(() => { ${js} })()`;
     iframe.contentWindow.document.body.appendChild(bodyScript);

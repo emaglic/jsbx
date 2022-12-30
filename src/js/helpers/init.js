@@ -1,4 +1,4 @@
-const interact = require("interactjs");
+// const interact = require("interactjs");
 const Editor = require("../layout/Editor");
 const HeadModal = require("../layout/head-modal");
 const { compileWindowCode } = require("../layout/create-window");
@@ -13,20 +13,30 @@ let hm = null;
 let editorProps = [];
 let editors = [];
 
-const handlePanelToggle = (left, right) => {
-  console.log("leftPanelActive: ", leftPanelActive);
-  console.log("rightPanelActive: ", rightPanelActive);
+const handlePanelToggle = (left, right, leftBtn, rightBtn) => {
   if ((leftPanelActive && rightPanelActive) || (!leftPanelActive && !rightPanelActive)) {
+    leftBtn.classList.remove("btn-danger");
+    leftBtn.classList.add("btn-info");
+    rightBtn.classList.remove("btn-danger");
+    rightBtn.classList.add("btn-info");
     left.classList.remove("hidden", "full-width");
     right.classList.remove("hidden", "full-width");
   } else if (leftPanelActive) {
     right.classList.remove("full-width");
     right.classList.add("hidden");
     left.classList.add("full-width");
+    leftBtn.classList.remove("btn-danger");
+    leftBtn.classList.add("btn-info");
+    rightBtn.classList.add("btn-danger");
+    rightBtn.classList.remove("btn-info");
   } else if (rightPanelActive) {
     left.classList.remove("full-width");
     left.classList.add("hidden");
     right.classList.add("full-width");
+    leftBtn.classList.add("btn-danger");
+    leftBtn.classList.remove("btn-info");
+    rightBtn.classList.remove("btn-danger");
+    rightBtn.classList.add("btn-info");
   }
 };
 
@@ -58,13 +68,21 @@ const createUI = () => {
   let toggleLeft = document.querySelector(".toggle-left");
   toggleLeft.onclick = () => {
     leftPanelActive = !leftPanelActive;
-    handlePanelToggle(editorContainerOuter, editorConsoleOuter);
+    if (!leftPanelActive && !rightPanelActive) {
+      leftPanelActive = true;
+      rightPanelActive = true;
+    }
+    handlePanelToggle(editorContainerOuter, editorConsoleOuter, toggleLeft, toggleRight);
   };
 
   let toggleRight = document.querySelector(".toggle-right");
   toggleRight.onclick = () => {
     rightPanelActive = !rightPanelActive;
-    handlePanelToggle(editorContainerOuter, editorConsoleOuter);
+    if (!leftPanelActive && !rightPanelActive) {
+      leftPanelActive = true;
+      rightPanelActive = true;
+    }
+    handlePanelToggle(editorContainerOuter, editorConsoleOuter, toggleLeft, toggleRight);
   };
 
   const clearConsoleBtn = document.querySelector(".clear-console-btn");
@@ -73,7 +91,7 @@ const createUI = () => {
     if (consoleEl) consoleEl.innerHTML = "";
   };
 
-  interact(editorContainerOuter).resizable({
+  /* interact(editorContainerOuter).resizable({
     edges: { top: true, left: true, bottom: true, right: true },
     listeners: {
       move: function (event) {
@@ -95,7 +113,7 @@ const createUI = () => {
         });
       },
     },
-  });
+  }); */
 
   let clearButton = document.querySelector(".clear-editor-btn");
   clearButton.onclick = () => {

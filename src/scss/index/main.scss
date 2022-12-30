@@ -1,3 +1,5 @@
+$anim-speed: 0.5s;
+
 *:focus,
 input:focus {
   outline: none !important;
@@ -52,22 +54,36 @@ main {
 .editor-container-outer {
   height: 100%;
   width: 50vw;
+  transition: width $anim-speed;
+  overflow-x: auto;
   &.full-width {
     width: 100%;
+    transition: width $anim-speed;
+    overflow-x: auto;
   }
   &.hidden {
-    display: none !important;
+    width: 0px;
+    transition: width $anim-speed;
+    overflow-x: hidden;
+    // display: none !important;
   }
 }
 
 .editor-console-outer {
   height: 100%;
   width: 50vw;
+  transition: width $anim-speed;
+  overflow-x: auto;
   &.full-width {
     width: 100%;
+    transition: width $anim-speed;
+    overflow-x: auto;
   }
   &.hidden {
-    display: none !important;
+    width: 0px;
+    transition: width $anim-speed;
+    overflow-x: hidden;
+    // display: none !important;
   }
 }
 
@@ -164,6 +180,11 @@ main {
 .toggle-btns {
   width: 100%;
   background-color: #556573;
+
   // border-bottom: solid 2px #38434c;
-  // justify-content: space-around;
+  justify-content: space-around;
+}
+
+.modal-title {
+  font-size: 1.5rem;
 }
