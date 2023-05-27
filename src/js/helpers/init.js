@@ -14,7 +14,10 @@ let editorProps = [];
 let editors = [];
 
 const handlePanelToggle = (left, right, leftBtn, rightBtn) => {
-  if ((leftPanelActive && rightPanelActive) || (!leftPanelActive && !rightPanelActive)) {
+  if (
+    (leftPanelActive && rightPanelActive) ||
+    (!leftPanelActive && !rightPanelActive)
+  ) {
     leftBtn.classList.remove("btn-danger");
     leftBtn.classList.add("btn-info");
     rightBtn.classList.remove("btn-danger");
@@ -45,14 +48,30 @@ const getAllEditors = () => {
 };
 
 const createUI = () => {
-  let htmlProps = { container: ".editor-container", mode: "htmlmixed", param: "html", defaultValue: htmlBoilerplate(), getAllEditors: getAllEditors };
-  let cssProps = { container: ".editor-container", mode: "css", param: "css", getAllEditors: getAllEditors };
-  let jsProps = { container: ".editor-container", mode: "javascript", param: "js", getAllEditors: getAllEditors };
+  let htmlProps = {
+    container: ".editor-container",
+    mode: "htmlmixed",
+    param: "html",
+    defaultValue: htmlBoilerplate(),
+    getAllEditors: getAllEditors,
+  };
+  let cssProps = {
+    container: ".editor-container",
+    mode: "css",
+    param: "css",
+    getAllEditors: getAllEditors,
+  };
+  let jsProps = {
+    container: ".editor-container",
+    mode: "javascript",
+    param: "js",
+    getAllEditors: getAllEditors,
+  };
 
   let editorConsoleOuter = document.querySelector(".editor-console-outer");
   let editorContainerOuter = document.querySelector(".editor-container-outer");
 
-  editorProps.push(htmlProps, cssProps, jsProps);
+  editorProps.push(cssProps, jsProps, htmlProps);
   editorProps.forEach((props, index) => {
     let e = new Editor({ ...props, index });
     editors.push(e);
@@ -72,7 +91,12 @@ const createUI = () => {
       leftPanelActive = true;
       rightPanelActive = true;
     }
-    handlePanelToggle(editorContainerOuter, editorConsoleOuter, toggleLeft, toggleRight);
+    handlePanelToggle(
+      editorContainerOuter,
+      editorConsoleOuter,
+      toggleLeft,
+      toggleRight
+    );
   };
 
   let toggleRight = document.querySelector(".toggle-right");
@@ -82,7 +106,12 @@ const createUI = () => {
       leftPanelActive = true;
       rightPanelActive = true;
     }
-    handlePanelToggle(editorContainerOuter, editorConsoleOuter, toggleLeft, toggleRight);
+    handlePanelToggle(
+      editorContainerOuter,
+      editorConsoleOuter,
+      toggleLeft,
+      toggleRight
+    );
   };
 
   const clearConsoleBtn = document.querySelector(".clear-console-btn");
@@ -127,6 +156,45 @@ const createUI = () => {
   const runBtn = document.querySelector(".run-btn");
   runBtn.onclick = () => {
     compileWindowCode(editors);
+  };
+
+  const saveButton = document.querySelector(".edit-save-btn");
+  saveButton.onclick = () => {
+    let values = {
+      html: "",
+      css: "",
+      js: "",
+    };
+
+    editors.forEach((editor) => {
+      let ext = editor.param;
+      let name = null;
+      let mime = null;
+      if (editor.param === "html") {
+        name = "index";
+        mime = "text/html";
+        const head = editor.getValue().split("<head>")[0];
+        const body = editor.getValue().split("<head>")[1];
+        const injectHead = `${head}<head><link rel='stylesheet' href='./styles.css'>${body}`;
+        const injectScript = injectHead.split("</html>")[0];
+        const html = `${injectScript}<script src='./index.js'></script>
+        </html>`;
+        values.html = html;
+      } else if (editor.param === "css") {
+        name = "styles";
+        mime = "text/css";
+        values.css = editor.getValue();
+      } else if (editor.param === "js") {
+        name = "index";
+        mime = "text/javascript";
+        values.js = editor.getValue();
+      }
+      const file = new Blob([values[ext]], { type: mime });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(file);
+      link.download = `${name}.${ext}`;
+      link.click();
+    });
   };
 
   const popOutPreviewGroup = document.querySelector(".pop-out-preview-group");

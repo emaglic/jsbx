@@ -10,8 +10,12 @@
       <div class="logo-container d-flex flex-row w-100 align-items-center">
         <img style="width: 22px; height: 22px" src="./images/cube.svg" />
         <h1 class="ml-2">JSBX</h1>
-        <button class="btn btn-info edit-head-btn ml-auto">Help!</button>
       </div>
+      <div class='d-flex flex-row justify-content-end' style="width: 100%">
+        <button class="btn btn-info edit-save-btn mr-2">Save to Files</button>
+        <button class="btn btn-info edit-head-btn">Help!</button>
+      </div>
+    </div>
     </header>
     <main class="d-flex flex-row">
       <div class="editor-container-outer d-flex flex-column">
@@ -22,19 +26,35 @@
             <button class="btn btn-info ml-auto run-btn">RUN</button>
           </div>
         </div>
-        <div class="editor-container h-100 d-flex flex-column position-relative"></div>
+        <div
+          class="editor-container h-100 d-flex flex-column position-relative"
+        ></div>
       </div>
       <div class="editor-console-outer d-flex flex-column">
         <div class="d-flex flex-row ml-auto w-100 control-container">
           <div class="d-flex flex-row editor-tabs pl-2">
-            <button class="btn btn-info editor-tab-btn iframe-console-btn mr-2 selected" data-view="console">CONSOLE</button>
-            <button class="btn btn-info editor-tab-btn iframe-preview-btn mr-2" data-view="iframe">PREVIEW</button>
+            <button
+              class="btn btn-info editor-tab-btn iframe-console-btn mr-2 selected"
+              data-view="console"
+            >
+              CONSOLE
+            </button>
+            <button
+              class="btn btn-info editor-tab-btn iframe-preview-btn mr-2"
+              data-view="iframe"
+            >
+              PREVIEW
+            </button>
           </div>
           <div class="'d-inline-flex ml-auto right-controls p-2">
             <div class="input-group">
               <div class="input-group">
                 <div class="input-group-text pop-out-preview-group hidden">
-                  <input type="checkbox" aria-label="Checkbox for following text input" id="pop-out-preview" />
+                  <input
+                    type="checkbox"
+                    aria-label="Checkbox for following text input"
+                    id="pop-out-preview"
+                  />
                   <label>Pop-Out Preview</label>
                 </div>
               </div>
@@ -47,8 +67,12 @@
       </div>
     </main>
     <div class="d-flex flex-row toggle-btns pl-2 py-2">
-      <button class="btn btn-info toggle-left editor-tab-btn mr-2">Left Panel</button>
-      <button class="btn btn-info toggle-right editor-tab-btn mr-2">Right Panel</button>
+      <button class="btn btn-info toggle-left editor-tab-btn mr-2">
+        Left Panel
+      </button>
+      <button class="btn btn-info toggle-right editor-tab-btn mr-2">
+        Right Panel
+      </button>
     </div>
   <script src="js/index.js"></script></body>
 </html>
